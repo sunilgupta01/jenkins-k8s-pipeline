@@ -20,7 +20,7 @@ pipeline {
                        export PATH=$PATH:$KOPS_HOME
                        #which kops
                        ls -latr
-                       aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${REGSION_NAME} --no-cli-pager
+                       aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${REGION} --no-cli-pager
                        aws s3api put-bucket-versioning --bucket ${BUCKET_NAME} --versioning-configuration Status=Enabled --no-cli-pager 
                        echo kops name  $CLUSTER_NAME
                        kops create -f kops/cluster.yaml
