@@ -38,7 +38,7 @@ pipeline {
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 // print (env.KOPS_HOME)
-                configFileProvider([configFile(fileId: '${SSH_PUBLIC_KEY_FILE_ID}', variable: 'ssh_pub_key')]) {
+                configFileProvider([configFile(fileId: '$SSH_PUBLIC_KEY_FILE_ID', variable: 'ssh_pub_key')]) {
                     sh """#! /bin/bash
                        set -x
                        export PATH=$PATH:$KOPS_HOME
