@@ -4,6 +4,7 @@ pipeline {
   environment {
       //TERRAFORM_HOME = tool name: 'Terraform', type:'com.cloudbees.jenkins.plugins.customtools.CustomTool'
       KOPS_HOME = tool name: 'kops', type:'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+      AWS_CLI_HOME = tool name: 'aws-cli', type:'com.cloudbees.jenkins.plugins.customtools.CustomTool'
   }
     stages {
         stage('KOPS_Install') {
@@ -17,7 +18,7 @@ pipeline {
                 configFileProvider([configFile(fileId: 'id_rsa.pub', variable: 'ssh_pub_key')]) {
                     sh """#! /bin/bash
                        set -x
-                       export PATH=$PATH:$KOPS_HOME
+                       export PATH=$PATH:$KOPS_HOME:$AWS_CLI_HOME
                        #which kops
                        ls -latr
                        aws s3api create-bucket --bucket ${BUCKET_NAME} --region ${REGION} --no-cli-pager
