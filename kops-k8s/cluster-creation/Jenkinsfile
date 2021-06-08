@@ -1,4 +1,11 @@
 /*
+
+## Jenkins management
+- Make sure jenkins has git plugin configured or is able to use git from system
+- Add public SSH key that will be used by kops for VM access using jenkins plugin "Config File Management". This file name will be referred by input parameter SSH_PUBLIC_KEY_FILE_ID
+- setup AWS CLI using "Custom tool" as part of "Global Tool Configuration"
+- setup kops using "Custom tool" as part of "Global Tool Configuration"
+
 ## environment variables expected with sample values
 KOPS_STATE_STORE=s3://mykops
 AWS_ACCESS_KEY_ID=
